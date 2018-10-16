@@ -41,15 +41,15 @@ public class Tetris extends JPanel implements Runnable{
         for(int i =0;i<mapHeight;i++){
             for(int j=0;j<mapWidth;j++){
                 if(map[i][j]){
-                    g.fillRect(j*blockSize,i*blockSize,blockSize,blockSize);
+                    g.fillRect((j*blockSize)+1,(i*blockSize)+1,blockSize-2,blockSize-2);
                 }
             }
         }
         for (int i = 0; i < this.nowBlock.length; i++) {
             for (int j = 0; j < this.nowBlock[i].length; j++) {
                 if (this.nowBlock[i][j])
-                    g.fillRect((nowPos.x + j) * blockSize, (nowPos.y + i) * blockSize,
-                            blockSize, blockSize);
+                    g.fillRect((nowPos.x + j) * blockSize+1, (nowPos.y + i) * blockSize+1,
+                            blockSize-2, blockSize-2);
             }
         }
 
@@ -81,16 +81,16 @@ public class Tetris extends JPanel implements Runnable{
 
     public void run(){
         while (true) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if(isTouch(new Point(nowPos.x,nowPos.y+1))){
                 fixBlock();
                 nowPos = new Point(8,1);
             }
             else{
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 nowPos.y++;
                 repaint();
             }

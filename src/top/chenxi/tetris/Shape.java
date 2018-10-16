@@ -21,4 +21,16 @@ public class Shape {
                     {false, true}
             }
     };
+    static boolean [][][] I = {
+            {
+                    {false,true},
+                    {false,true},
+                    {false,true},
+                    {false,true}
+            },
+            {
+                    {false,false,false,false},
+                    {true,true,true,true}
+            }
+    };
 }
