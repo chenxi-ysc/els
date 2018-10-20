@@ -1,36 +1,49 @@
 package top.chenxi.tetris;
 
 public class Shape {
-    static boolean [][][] T = {
+    static boolean [][][] shap = {
+            // I
             {
-                    {false, true, false},
-                    {true, true, true}
+                    { false, false, false, false },
+                    { true, true, true, true },
+                    { false, false, false, false },
+                    { false, false, false, false }
             },
+            // J
             {
-                    {true, false},
-                    {true, true},
-                    {true, false}
+                    { true, false, false },
+                    { true, true, true },
+                    { false, false, false }
             },
+            // L
             {
-                    {true, true, true},
-                    {false, true, false}
+                    { false, false, true },
+                    { true, true, true },
+                    { false, false, false }
             },
+            // O
             {
-                    {false, true},
-                    {true, true},
-                    {false, true}
+                    { true, true },
+                    { true, true }
+            },
+            // S
+            {
+                    { false, true, true },
+                    { true, true, false },
+                    { false, false, false }
+            },
+            // T
+            {
+                    { false, true, false },
+                    { true, true, true },
+                    { false, false, false }
+            },
+            // Z
+            {
+                    { true, true, false },
+                    { false, true, true },
+                    { false, false, false }
             }
     };
-    static boolean [][][] I = {
-            {
-                    {false,true},
-                    {false,true},
-                    {false,true},
-                    {false,true}
-            },
-            {
-                    {false,false,false,false},
-                    {true,true,true,true}
-            }
-    };
+
 }

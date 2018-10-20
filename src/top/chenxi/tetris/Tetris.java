@@ -9,7 +9,6 @@ public class Tetris extends JPanel implements Runnable{
     int blockSize = 25;
     int mapWidth = 20;
     int mapHeight = 30;
-    int nowShape = 0;
     Point nowPos = new Point(8,1);
     boolean[][] nowBlock;
     boolean[][] map = new boolean[30][20];
@@ -33,7 +32,7 @@ public class Tetris extends JPanel implements Runnable{
             map[mapHeight-1][i] = true;
             //g.drawRect((1 + i) * blockSize, mapHeight * blockSize, blockSize,blockSize);
         }
-        nowBlock = Shape.T[nowShape];
+        nowBlock = Shape.shap[newBlock()];
     }
     public void paint(Graphics g){
         super.paint(g);
@@ -41,18 +40,47 @@ public class Tetris extends JPanel implements Runnable{
         for(int i =0;i<mapHeight;i++){
             for(int j=0;j<mapWidth;j++){
                 if(map[i][j]){
-                    g.fillRect((j*blockSize)+1,(i*blockSize)+1,blockSize-2,blockSize-2);
+                    g.fillRect((j*blockSize+1),(i*blockSize+1),blockSize-2,blockSize-2);
+                    g.setColor(Color.white);
+                    g.fillRect((j*blockSize)+4,(i*blockSize)+4,blockSize-8,blockSize-8);
+                    g.setColor(new Color(30,30,30));
+                    g.fillRect((j*blockSize)+6,(i*blockSize)+6,blockSize-12,blockSize-12);
                 }
             }
         }
+        //画当前方块
         for (int i = 0; i < this.nowBlock.length; i++) {
             for (int j = 0; j < this.nowBlock[i].length; j++) {
-                if (this.nowBlock[i][j])
-                    g.fillRect((nowPos.x + j) * blockSize+1, (nowPos.y + i) * blockSize+1,
-                            blockSize-2, blockSize-2);
+                if (this.nowBlock[i][j]) {
+                    g.fillRect((nowPos.x + j) * blockSize + 1, (nowPos.y + i) * blockSize + 1, blockSize - 2, blockSize - 2);
+                    g.setColor(Color.WHITE);
+                    g.fillRect((nowPos.x + j) * blockSize + 4, (nowPos.y + i) * blockSize + 4, blockSize - 8, blockSize - 8);
+                    g.setColor(new Color(30, 30, 30));
+                    g.fillRect((nowPos.x + j) * blockSize + 6, (nowPos.y + i) * blockSize + 6, blockSize - 12, blockSize - 12);
+                }
             }
         }
 
+    }
+
+    public int newBlock(){
+        return (int)(Shape.shap.length*Math.random());
+    }
+
+    public void rotataBlock(){
+        int height = nowBlock.length;
+        int width = nowBlock[0].length;
+        boolean[][] resultBlock = new boolean[height][width];
+        int y = height - 1, x = 0;
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < width; j++) {
+                resultBlock[i][j] = nowBlock[y][x];
+                y--;
+            }
+            y = height - 1;
+            x++;
+        }
+        nowBlock = resultBlock;
     }
 
     public boolean isTouch(Point p){
@@ -82,13 +110,15 @@ public class Tetris extends JPanel implements Runnable{
     public void run(){
         while (true) {
             try {
-                Thread.sleep(500);
+                Thread.sleep(600);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if(isTouch(new Point(nowPos.x,nowPos.y+1))){
                 fixBlock();
+                nowBlock = Shape.shap[newBlock()];
                 nowPos = new Point(8,1);
+                repaint();
             }
             else{
                 nowPos.y++;
@@ -109,6 +139,8 @@ public class Tetris extends JPanel implements Runnable{
                     if (isTouch(new Point(nowPos.x,nowPos.y+1))){
                         fixBlock();
                         nowPos = new Point(8,1);
+                        nowBlock = Shape.shap[newBlock()];
+                        repaint();
                     }
                     else {
                         nowPos.y++;
@@ -131,9 +163,10 @@ public class Tetris extends JPanel implements Runnable{
                     }
                     break;
                 case KeyEvent.VK_UP:
-                    nowShape++;
-                    nowShape = nowShape %4;
-                    nowBlock = Shape.T[nowShape];
+//                    nowShape++;
+//                    nowShape = nowShape %4;
+//                    nowBlock = Shape.T[nowShape];
+                    rotataBlock();
                     break;
             }
             repaint();
