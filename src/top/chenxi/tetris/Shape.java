@@ -4,10 +4,10 @@ public class Shape {
     static boolean [][][] shap = {
             // I
             {
-                    { false, false, false, false },
-                    { true, true, true, true },
-                    { false, false, false, false },
-                    { false, false, false, false }
+                    { false, true, false, false },
+                    { false, true, false, false },
+                    { false, true, false, false },
+                    { false, true, false, false }
             },
             // J
             {
