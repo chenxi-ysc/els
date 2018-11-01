@@ -6,28 +6,25 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Tetris extends JPanel implements Runnable{
-    private int mapWidth = 20;
+    private int mapWidth = 19;
     private int mapHeight = 30;
     private Object lock = new Object();
     private boolean isOver = false;
     private boolean isPause = false;
     private boolean[][] nowBlock;
     private boolean[][] nextBlock;
-    private boolean[][] map = new boolean[30][20];
+    private boolean[][] map = new boolean[30][19];
     private int score = 0;
     private Font font = new Font("宋体",Font.PLAIN,20);
-    private Thread thread = new Thread(this);
+    //private Thread thread = new Thread(this);
     private JButton pause = new JButton("暂停");
-    private Point nowPos = new Point(8,1);
+    private Point nowPos = new Point(8,0);
 
 
     public Tetris(){
         this.init();
     }
 
-    public void start(){
-        thread.start();
-    }
 
     public void suspend(){
         isPause = true;
@@ -41,6 +38,30 @@ public class Tetris extends JPanel implements Runnable{
         synchronized (lock){
             lock.notify();
         }
+    }
+
+    public void startGame() {
+        for (int i = 0;i < mapHeight;i ++){
+            for (int j = 0;j < mapWidth;j ++){
+                map[i][j] = false;
+            }
+        }
+        //初始化墙
+        for (int i = 0; i < mapHeight; i++) {
+            map[i][0] = true;
+            map[i][mapWidth-1] = true;
+        }
+        for (int i = 0; i < mapWidth; i++) {
+            map[mapHeight-1][i] = true;
+        }
+        this.score = 0;
+        this.isOver = false;
+        this.nowBlock = newBlock();
+        this.nextBlock = newBlock();
+        this.nowPos = new Point(8,0);
+        this.repaint();
+        Thread thread = new Thread(this);
+        thread.start();
     }
 
     public void init(){
@@ -60,16 +81,7 @@ public class Tetris extends JPanel implements Runnable{
             }
         });
         this.add(pause);
-        //初始化墙
-        for (int i = 0; i < mapHeight; i++) {
-            map[i][0] = true;
-            map[i][mapWidth-1] = true;
-        }
-        for (int i = 0; i < mapWidth; i++) {
-            map[mapHeight-1][i] = true;
-        }
-        nowBlock = Shape.shap[newBlock()];
-        nextBlock = Shape.shap[newBlock()];
+        startGame();
     }
     public void paint(Graphics g){
         super.paint(g);
@@ -117,8 +129,9 @@ public class Tetris extends JPanel implements Runnable{
         g.drawString("当前分数：" + score, 690, 500);
     }
 
-    public int newBlock(){
-        return (int)(Shape.shap.length*Math.random());
+    public boolean[][] newBlock(){
+        int mark = (int)(Shape.shap.length*Math.random());
+        return Shape.shap[mark];
     }
 
     //旋转方块
@@ -201,8 +214,11 @@ public class Tetris extends JPanel implements Runnable{
         if(isTouch(new Point(nowPos.x,nowPos.y+1),nowBlock)){
             fixBlock();
             nowBlock = nextBlock;
-            nextBlock = Shape.shap[newBlock()];
-            nowPos = new Point(8,1);
+            nextBlock = newBlock();
+            nowPos = new Point(8,0);
+            if(isTouch(nowPos,nowBlock)){
+                isOver = true;
+            }
             repaint();
         }
         else{
@@ -230,6 +246,8 @@ public class Tetris extends JPanel implements Runnable{
                 down();
             }
         }
+        JOptionPane.showMessageDialog(this, "GAME OVER");
+        this.startGame();
     }
 
     //键盘监听器

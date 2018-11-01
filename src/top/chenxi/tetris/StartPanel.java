@@ -17,7 +17,7 @@ public class StartPanel extends JPanel {
                 add(tetris);
                 repaint();
                 tetris.requestFocus();
-                tetris.start();
+                //tetris.start();
         });
         button.setSize(icon.getIconWidth(),icon.getIconHeight());
         button.setBounds((this.getWidth()-button.getWidth())/2, (this.getHeight()-button.getHeight())/2+180,button.getWidth(),button.getHeight());

@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02e7c969-d5de-4a29-83a9-1b766cc3ab7a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Shape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/StartPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/StartPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Tetris$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Tetris$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Tetris$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/els/top/chenxi/tetris/Tetris.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chenxi/tetris/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chenxi/tetris/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chenxi/tetris/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chenxi/tetris/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/top/chenxi/tetris/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chenxi/tetris/Shape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/chenxi/tetris/StartPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chenxi/tetris/StartPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/top/chenxi/tetris/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/top/chenxi/tetris/Tetris.java" afterDir="false" />
     </list>
@@ -41,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/MyFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="4" column="37" lean-forward="true" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -49,8 +45,8 @@
       <file leaf-file-name="StartPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/StartPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+            <state relative-caret-position="175">
+              <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,10 +66,12 @@
       <file leaf-file-name="Tetris.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/Tetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+            <state relative-caret-position="-900">
+              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#729#730#0" expanded="true" />
+                <element signature="e#756#757#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,10 +118,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-51" />
-    <option name="y" value="-51" />
-    <option name="width" value="1396" />
-    <option name="height" value="726" />
+    <option name="x" value="-53" />
+    <option name="y" value="-53" />
+    <option name="width" value="1398" />
+    <option name="height" value="727" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -133,6 +131,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,7 +158,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -167,7 +165,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/download/Tetris-Swing-master/Tetris-Swing-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -247,11 +245,12 @@
       <workItem from="1540544028258" duration="9159000" />
       <workItem from="1540709559695" duration="4954000" />
       <workItem from="1540990142254" duration="1207000" />
+      <workItem from="1541038820712" duration="5666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104107000" />
+    <option name="totallyTimeSpent" value="109773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -275,7 +274,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.09489994" side_tool="true" weight="0.32968536" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32831737" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3269494" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.90510005" weight="0.1737346" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32909605" />
       <window_info id="Capture Tool" order="2" />
@@ -313,19 +312,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/Shape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/Tetris.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1632">
           <caret line="71" column="13" lean-forward="true" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -354,6 +348,8 @@
           <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -689,17 +685,7 @@
     <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/MyFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="4" column="37" lean-forward="true" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/StartPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -710,12 +696,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/Tetris.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JOptionPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+        <state relative-caret-position="192">
+          <caret line="605" column="23" selection-start-line="605" selection-start-column="23" selection-end-line="605" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/StartPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top/chenxi/tetris/Tetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-900">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
           </folding>
         </state>
       </provider>
