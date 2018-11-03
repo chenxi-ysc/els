@@ -11,18 +11,17 @@ public class StartPanel extends JPanel {
         button.setIcon(icon);
         this.setLayout(null);
         button.addActionListener(e ->{
-                remove(button);
+                this.remove(button);
                 Tetris tetris = new Tetris();
                 tetris.setBounds(0,0,1000,800);
-                add(tetris);
+                this.add(tetris);
                 repaint();
                 tetris.requestFocus();
-                //tetris.start();
         });
         button.setSize(icon.getIconWidth(),icon.getIconHeight());
         button.setBounds((this.getWidth()-button.getWidth())/2, (this.getHeight()-button.getHeight())/2+180,button.getWidth(),button.getHeight());
         button.setContentAreaFilled(false);
-        //除去边框
+        //除去button边框
         //button.setBorder(null);
         this.add(button);
     }

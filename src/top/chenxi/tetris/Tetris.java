@@ -5,6 +5,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * 俄罗斯方块主面板，包含主要的游戏逻辑以及线程暂停。
+ * @author chasen
+ * @version 1.0
+ */
 public class Tetris extends JPanel implements Runnable{
     private int mapWidth = 19;
     private int mapHeight = 30;
@@ -26,11 +31,42 @@ public class Tetris extends JPanel implements Runnable{
     }
 
 
+
+
+    /**
+     * 初始化该面板类，主要有添加按钮，监听器，并调用开始游戏方法
+     */
+    public void init(){
+        this.addKeyListener(this.keylistener);
+        this.setFocusable(true);
+        this.setLayout(null);
+        //去掉按钮文字周围的焦点框
+        pause.setFocusPainted(false);
+        pause.setFont(font);
+        pause.setBounds(700,600,100,50);
+        pause.addActionListener(e -> {
+            if(!isPause) {
+                suspend();
+            }
+            else{
+                resume();
+            }
+        });
+        this.add(pause);
+        startGame();
+    }
+
+    /**
+     * 利用lock同步锁实现线程的暂停
+     */
     public void suspend(){
         isPause = true;
         pause.setText("继续");
     }
 
+    /**
+     * 利用lock同步锁实现线程的继续
+     */
     public void resume(){
         isPause = false;
         this.requestFocus();
@@ -40,6 +76,9 @@ public class Tetris extends JPanel implements Runnable{
         }
     }
 
+    /**
+     * 开始游戏以及重新开始需要调用该方法。
+     */
     public void startGame() {
         for (int i = 0;i < mapHeight;i ++){
             for (int j = 0;j < mapWidth;j ++){
@@ -64,25 +103,33 @@ public class Tetris extends JPanel implements Runnable{
         thread.start();
     }
 
-    public void init(){
-        this.addKeyListener(this.keylistener);
-        this.setFocusable(true);
-        this.setLayout(null);
-        //去掉按钮文字周围的焦点框
-        pause.setFocusPainted(false);
-        pause.setFont(font);
-        pause.setBounds(700,600,100,50);
-        pause.addActionListener(e -> {
-            if(!isPause) {
-                suspend();
+    //下落线程
+    public void run(){
+        synchronized (lock){
+            while (!isOver){
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                while(isPause){
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                down();
             }
-            else{
-                resume();
-            }
-        });
-        this.add(pause);
-        startGame();
+        }
+        JOptionPane.showMessageDialog(this, "GAME OVER");
+        this.startGame();
     }
+
+    /**
+     * 游戏主体的绘制方法
+     * @param g
+     */
     public void paint(Graphics g){
         super.paint(g);
         // 画map
@@ -227,29 +274,6 @@ public class Tetris extends JPanel implements Runnable{
         }
     }
 
-    //下落线程
-    public void run(){
-        synchronized (lock){
-             while (!isOver){
-                try {
-                    Thread.sleep(600);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                while(isPause){
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                down();
-            }
-        }
-        JOptionPane.showMessageDialog(this, "GAME OVER");
-        this.startGame();
-    }
-
     //键盘监听器
     KeyListener keylistener = new KeyListener() {
         @Override
@@ -299,4 +323,17 @@ public class Tetris extends JPanel implements Runnable{
 
         }
     };
+
+    //test方法
+    public static void main(String[] args){
+        JFrame frame = new JFrame();
+        Tetris tetris = new Tetris();
+        frame.setSize(1000,800);
+        frame.setTitle("俄罗斯方块");
+        frame.add(tetris);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 }
