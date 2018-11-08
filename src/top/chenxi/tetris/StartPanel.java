@@ -7,13 +7,13 @@ public class StartPanel extends JPanel {
     private JButton button = new JButton();
     ImageIcon icon = new ImageIcon("src/play.png");
     public StartPanel(){
-        this.setSize(1000,800);
+        this.setSize(1000,775);
         button.setIcon(icon);
         this.setLayout(null);
         button.addActionListener(e ->{
                 this.remove(button);
                 Tetris tetris = new Tetris();
-                tetris.setBounds(0,0,1000,800);
+                tetris.setBounds(0,0,1000,775);
                 this.add(tetris);
                 repaint();
                 tetris.requestFocus();

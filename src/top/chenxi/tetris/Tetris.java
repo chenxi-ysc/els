@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 public class Tetris extends JPanel implements Runnable{
     private int mapWidth = 19;
     private int mapHeight = 30;
+    private int blockSize = 25;
     private Object lock = new Object();
     private boolean isOver = false;
     private boolean isPause = false;
@@ -23,6 +24,7 @@ public class Tetris extends JPanel implements Runnable{
     private Font font = new Font("宋体",Font.PLAIN,20);
     //private Thread thread = new Thread(this);
     private JButton pause = new JButton("暂停");
+    private JButton restart = new JButton("重新开始");
     private Point nowPos = new Point(8,0);
 
 
@@ -40,10 +42,14 @@ public class Tetris extends JPanel implements Runnable{
         this.addKeyListener(this.keylistener);
         this.setFocusable(true);
         this.setLayout(null);
+        restart.setFocusPainted(false);
+        restart.setFont(font);
+        restart.setBounds(675,600,150,50);
+        restart.addActionListener(e -> startGame());
         //去掉按钮文字周围的焦点框
         pause.setFocusPainted(false);
         pause.setFont(font);
-        pause.setBounds(700,600,100,50);
+        pause.setBounds(675,500,150,50);
         pause.addActionListener(e -> {
             if(!isPause) {
                 suspend();
@@ -53,6 +59,7 @@ public class Tetris extends JPanel implements Runnable{
             }
         });
         this.add(pause);
+        this.add(restart);
         startGame();
     }
 
@@ -133,7 +140,6 @@ public class Tetris extends JPanel implements Runnable{
     public void paint(Graphics g){
         super.paint(g);
         // 画map
-        int blockSize = 25;
         for(int i = 0; i<mapHeight; i++){
             for(int j=0;j<mapWidth;j++){
                 if(map[i][j]){
@@ -158,9 +164,9 @@ public class Tetris extends JPanel implements Runnable{
             }
         }
         //设置字体
-        g.setFont(font);
+        g.setFont(new Font("宋体",Font.PLAIN,30));
         //画下一个方块
-        g.drawString("下一个方块：", 690, 50);
+        g.drawString("下一个方块：", 670, 50);
         for (int i = 0; i < this.nextBlock.length; i++) {
             for (int j = 0; j < this.nextBlock[i].length; j++) {
                 if (this.nextBlock[i][j]) {
@@ -173,7 +179,7 @@ public class Tetris extends JPanel implements Runnable{
             }
         }
         //画分数
-        g.drawString("当前分数：" + score, 690, 500);
+        g.drawString("当前分数：" + score, 670, 400);
     }
 
     public boolean[][] newBlock(){
